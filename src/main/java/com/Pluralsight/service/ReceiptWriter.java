@@ -16,7 +16,7 @@ public class ReceiptWriter {
         String fileName = "receipt " + time + ".txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-            writer.write(order.getSummary()); 
+            writer.write(order.getSummary());
             System.out.println("Receipt saved to " + fileName);
         } catch (IOException e) {
             System.out.println("Error writing receipt: " + e.getMessage());
