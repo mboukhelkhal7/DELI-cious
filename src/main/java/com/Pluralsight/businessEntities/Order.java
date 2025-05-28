@@ -1,6 +1,7 @@
 package com.Pluralsight.businessEntities;
 
 import com.Pluralsight.interfaces.PriceItem;
+import com.Pluralsight.service.OrderUtils;
 
 import java.util.List;
 
@@ -14,6 +15,10 @@ public class Order implements PriceItem {
         this.sandwiches = sandwiches;
         this.drinks = drinks;
         this.chips = chips;
+    }
+
+    public Order() {
+
     }
 
     public List<Sandwich> getSandwiches() {return sandwiches;}
@@ -37,17 +42,9 @@ public class Order implements PriceItem {
     public double getPrice() {
        double total = 0;
 
-        for (Sandwich s : sandwiches) {
-            total += s.getPrice();
-        }
-
-        for (Drink d : drinks) {
-            total += d.getPrice();
-        }
-
-        for (Chip c : chips) {
-            total += c.getPrice();
-        }
+        total += OrderUtils.calculateTotal(sandwiches);
+        total += OrderUtils.calculateTotal(drinks);
+        total += OrderUtils.calculateTotal(chips);
 
         return total;
     }

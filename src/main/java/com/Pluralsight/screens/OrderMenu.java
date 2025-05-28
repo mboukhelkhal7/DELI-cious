@@ -1,5 +1,7 @@
 package com.Pluralsight.screens;
 
+import com.Pluralsight.businessEntities.Chip;
+import com.Pluralsight.businessEntities.Drink;
 import com.Pluralsight.businessEntities.Order;
 import com.Pluralsight.service.ReceiptWriter;
 
@@ -28,17 +30,16 @@ public class OrderMenu {
              switch (choice) {
                  case "1":
                      System.out.println("\n [ Add Sandwich ]");
-                     //
-                     System.out.println("Sandwich builder coming soon...");
+                     SandwichBuilder.show(order);
+
                      break;
                  case "2":
                      System.out.println("\n[ add Drink]");
-                     //
-                     System.out.println("Drink selector coming soon...");
+                     addDrink(order, scanner);
                      break;
                  case "3":
                      System.out.println("\n[ add chips ]");
-                     //
+                     addChip(order, scanner);
                      System.out.println("Chip selector coming soon...");
                      break;
                  case "4":
@@ -58,6 +59,24 @@ public class OrderMenu {
              System.out.println("\nPress Enter to continue...");
              scanner.nextLine();
          }
+    }
+
+    private static void addDrink(Order order, Scanner scanner) {
+        System.out.print("Enter drink size (small / medium / large): ");
+        String size = scanner.nextLine().trim();
+        System.out.print("Enter drink flavor (e.g. Coke, Sprite): ");
+        String flavor = scanner.nextLine().trim();
+
+        order.addDrink(new Drink(size, flavor));
+        System.out.println(" Drink added to your order.");
+    }
+
+    private static void addChip(Order order, Scanner scanner) {
+        System.out.print("Enter chip type (e.g. Lays, Doritos): ");
+        String type = scanner.nextLine().trim();
+
+        order.addChip(new Chip(type));
+        System.out.println(" Chip added to your order.");
     }
 
 }

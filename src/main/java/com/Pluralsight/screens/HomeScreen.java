@@ -1,5 +1,7 @@
 package com.Pluralsight.screens;
 
+import com.Pluralsight.businessEntities.Order;
+
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -27,7 +29,8 @@ public class HomeScreen {
             switch (choice) {
                 case "1":
                     System.out.println("\nStarting a new order...");
-                    // order menu
+                    Order order = new Order();
+                    OrderMenu.show(order);
                     System.out.println("Order building coming soon...");
                     break;
                 case "0":
