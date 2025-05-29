@@ -14,15 +14,26 @@ public class OrderMenu {
          while (true) {
 
              System.out.println("\n============================================");
-             System.out.println("            BUILD YOUR ORDER MENU");
+             System.out.println("             DELI-cious Order Menu          ");
              System.out.println("============================================");
-             System.out.println("1) Add Sandwich");
+
+             System.out.printf("%-25s %-10s %-10s %-10s\n", "Item", "Small", "Medium", "Large");
+             System.out.println("----------------------------------------------------------");
+             System.out.printf("%-25s $%-9.2f $%-9.2f $%-9.2f\n", "Sandwich", 5.50, 7.00, 8.50);
+             System.out.printf("%-25s $%-9.2f $%-9.2f $%-9.2f\n", "Meat (extra)", 1.00, 2.00, 3.00);
+             System.out.printf("%-25s $%-9.2f $%-9.2f $%-9.2f\n", "Cheese (extra)", 0.75, 1.50, 2.25);
+             System.out.printf("%-25s %-10s %-10s %-10s\n", "Regular Toppings", "Included", "Included", "Included");
+             System.out.printf("%-25s %-10s %-10s %-10s\n", "Sauces", "Included", "Included", "Included");
+             System.out.println("----------------------------------------------------------");
+             System.out.printf("%-25s $%-9.2f $%-9.2f $%-9.2f\n", "Drinks", 2.00, 2.50, 3.00);
+             System.out.printf("%-25s $%-9.2f\n", "Chips", 1.50);
+
+             System.out.println("\n1) Add Sandwich");
              System.out.println("2) Add Drink");
              System.out.println("3) Add Chips");
              System.out.println("4) View Order Summary");
              System.out.println("5) Save Receipt");
              System.out.println("0) Return to Home Screen");
-             System.out.println("--------------------------------------------");
              System.out.print("Enter your choice: ");
 
              String choice = scanner.nextLine();
@@ -59,8 +70,16 @@ public class OrderMenu {
                      }
 
                  case "5":
-                     System.out.println("\n[ Saving Receipt ]");
-                     ReceiptWriter.saveOrderToFile(order);
+                     System.out.print("\nWould you like to confirm your order and save the receipt? (yes/no): ");
+                     String confirmed = scanner.nextLine().trim().toLowerCase();
+
+                     if (confirmed.startsWith("y")) {
+                         ReceiptWriter.saveOrderToFile(order);
+                         System.out.println("Receipt saved. Returning to home screen...");
+                         return;
+                     } else {
+                         System.out.println("Receipt not saved. Returning to order menu...");
+                     }
                      break;
                  case "0":
                      System.out.print("Are you sure you want to cancel this order? (yes/no): ");

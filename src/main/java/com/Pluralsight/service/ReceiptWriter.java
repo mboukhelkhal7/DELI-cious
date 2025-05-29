@@ -16,8 +16,13 @@ public class ReceiptWriter {
         String fileName = "receipt_" + time.replace(":", "-").replace(" ", "_") + ".txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            writer.write("=== DELI-cious Sandwich Shop ===\n");
+            writer.write("     Fresh. Fast. Friendly.\n");
+            writer.write("-------------------------------\n");
             writer.write("Date: " + time + "\n\n");
             writer.write(order.getSummary());
+            writer.write("\n\nThank you for your order!\n");
+            writer.write("Have a delicious day!");
             System.out.println("Receipt saved to " + fileName);
         } catch (IOException e) {
             System.out.println("Error writing receipt: " + e.getMessage());

@@ -25,9 +25,17 @@ public class Topping implements PriceItem {
     public double getPrice() {
         double price = 0;
         if (isExtra) {
-            if (type.equals(com.Pluralsight.types.ToppingType.MEAT)) price = 1.00;
-            else if (type.equals(com.Pluralsight.types.ToppingType.CHEESE)) price = 0.75;
+            if (type.equals(ToppingType.MEAT)) {
+                price = 1.00;
+            } else if (type.equals(ToppingType.CHEESE)) {
+                price = 0.75;
+            } else if (type.equals(ToppingType.SAUCE)) {
+                price = 0.50;
+            } else {
+                price = 0.25; // any other extra topping
+            }
         }
+
         return price;
     }
 

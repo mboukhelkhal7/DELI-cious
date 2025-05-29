@@ -1,0 +1,21 @@
+=== DELI-cious Sandwich Shop ===
+     Fresh. Fast. Friendly.
+-------------------------------
+Date: 2025-05-29-10-02-20
+
+=== ORDER SUMMARY ===
+
+8" white (Toasted)
+Toppings:
+ - turkey (meat) [extra]
+ - cheddar (cheese)
+Total: $8.0
+
+Drink: small coke
+
+Chips: lays
+
+Total: $11.5
+
+Thank you for your order!
+Have a delicious day!

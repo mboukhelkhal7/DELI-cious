@@ -83,6 +83,8 @@ public class SandwichBuilder {
             String name = scanner.nextLine().trim();
             if (name.isEmpty()) break;
 
+            displayMeatMenu();
+
             System.out.print("\"Enter topping type (meat/cheese/sauce/regular): ");
             String typeInput = scanner.nextLine().trim().toLowerCase();
             String type = switch (typeInput) {
@@ -100,6 +102,23 @@ public class SandwichBuilder {
             sandwich.addTopping(topping);
             System.out.println(" Added " + topping);
         }
+    }
+
+    public static void displayMeatMenu() {
+        System.out.println("--------------------------------------------------");
+        System.out.println("|                   Meats                        |");
+        System.out.println("|  - steak                                        |");
+        System.out.println("|  - ham                                          |");
+        System.out.println("|  - salami                                       |");
+        System.out.println("|  - roast beef                                   |");
+        System.out.println("|  - chicken                                      |");
+        System.out.println("|  - bacon                                        |");
+        System.out.println("--------------------------------------------------");
+        System.out.println("|              Extra Meat Pricing                 |");
+        System.out.println("|        |   4in   |   8in   |   12in             |");
+        System.out.println("|--------|---------|---------|--------------------|");
+        System.out.println("| Extra  |  $0.50  |  $1.00  |  $1.50              |");
+        System.out.println("--------------------------------------------------");
     }
 
 }
