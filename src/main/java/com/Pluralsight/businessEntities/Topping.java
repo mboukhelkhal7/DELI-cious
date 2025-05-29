@@ -23,16 +23,16 @@ public class Topping implements PriceItem {
 
     @Override
     public double getPrice() {
-        double basePrice;
-        if (type.equals(ToppingType.MEAT)) basePrice = 1.50;
-        else if (type.equals(ToppingType.CHEESE)) basePrice = 1.00;
-        else basePrice = 0.50;
-
-        return isExtra ? basePrice * 2 : basePrice;
+        double price = 0;
+        if (isExtra) {
+            if (type.equals(com.Pluralsight.types.ToppingType.MEAT)) price = 1.00;
+            else if (type.equals(com.Pluralsight.types.ToppingType.CHEESE)) price = 0.75;
+        }
+        return price;
     }
 
     public String toString() {
-        return name + (isExtra ? " (extra)" : "");
+        return name + " (" + type + ")" + (isExtra ? " [extra]" : "");
     }
 
 }

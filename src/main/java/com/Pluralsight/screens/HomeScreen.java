@@ -31,7 +31,6 @@ public class HomeScreen {
                     System.out.println("\nStarting a new order...");
                     Order order = new Order();
                     OrderMenu.show(order);
-                    System.out.println("Order building coming soon...");
                     break;
                 case "0":
                     System.out.println("Thank you for visiting DELI-cious. Goodbye!");

@@ -21,6 +21,6 @@ public class Chip implements PriceItem {
         return type + " Chips - $" + getPrice();
     }
     public String toString() {
-        return getSummary();
+        return type;
     }
 }

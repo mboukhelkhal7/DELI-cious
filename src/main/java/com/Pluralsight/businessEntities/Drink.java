@@ -29,6 +29,6 @@ public class Drink implements PriceItem {
         return size + " " + flavor + " - $" + getPrice();
     }
     public String toString() {
-        return getSummary();
+        return size + " " + flavor;
     }
 }

@@ -40,18 +40,39 @@ public class OrderMenu {
                  case "3":
                      System.out.println("\n[ add chips ]");
                      addChip(order, scanner);
-                     System.out.println("Chip selector coming soon...");
+
                      break;
                  case "4":
-                     System.out.println("\n[ Order Summary ]");
+                     System.out.println("\n====== CHECKOUT ======");
                      System.out.println(order.getSummary());
-                     break;
+
+                     System.out.print("\nDo you want to confirm this order? (yes/no): ");
+                     String confirm = scanner.nextLine().trim().toLowerCase();
+
+                     if (confirm.startsWith("y")) {
+                         ReceiptWriter.saveOrderToFile(order);
+                         System.out.println(" Order saved. Returning to Home Screen...");
+                         return;
+                     } else {
+                         System.out.println(" Order canceled. Returning to Home Screen...");
+                         return;
+                     }
+
                  case "5":
                      System.out.println("\n[ Saving Receipt ]");
                      ReceiptWriter.saveOrderToFile(order);
                      break;
                  case "0":
-                     System.out.println("\nReturning to Home Screen...");
+                     System.out.print("Are you sure you want to cancel this order? (yes/no): ");
+                     String cancelInput = scanner.nextLine().trim().toLowerCase();
+
+                     if (cancelInput.startsWith("y")) {
+                         order.clear();
+                         System.out.println("Order canceled. Returning to Home Screen...");
+                         return;
+                     } else {
+                         System.out.println("Returning to order menu...");
+                     }
                      return;
                  default:
                      System.out.println("Invalid input. Please enter a number between 0 and 5.");
@@ -62,6 +83,7 @@ public class OrderMenu {
     }
 
     private static void addDrink(Order order, Scanner scanner) {
+        System.out.println("\n--- Add a Drink ---");
         System.out.print("Enter drink size (small / medium / large): ");
         String size = scanner.nextLine().trim();
         System.out.print("Enter drink flavor (e.g. Coke, Sprite): ");
@@ -72,6 +94,7 @@ public class OrderMenu {
     }
 
     private static void addChip(Order order, Scanner scanner) {
+        System.out.println("\n--- Add Chips ---");
         System.out.print("Enter chip type (e.g. Lays, Doritos): ");
         String type = scanner.nextLine().trim();
 

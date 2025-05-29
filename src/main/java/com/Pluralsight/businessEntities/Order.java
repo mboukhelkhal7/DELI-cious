@@ -3,24 +3,23 @@ package com.Pluralsight.businessEntities;
 import com.Pluralsight.interfaces.PriceItem;
 import com.Pluralsight.service.OrderUtils;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
 public class Order implements PriceItem {
-    private List<Sandwich> sandwiches;
-    private List<Drink> drinks;
-    private List<Chip>chips;
+    private List<Sandwich> sandwiches = new ArrayList<>();
+    private List<Drink> drinks = new ArrayList<>();
+    private List<Chip>chips = new ArrayList<>();
 
     public Order(List<Sandwich> sandwiches, List<Drink> drinks, List<Chip> chips) {
         this.sandwiches = sandwiches;
         this.drinks = drinks;
         this.chips = chips;
     }
-
     public Order() {
-
     }
-
     public List<Sandwich> getSandwiches() {return sandwiches;}
 
     public List<Drink> getDrinks() {return drinks;}
@@ -41,34 +40,44 @@ public class Order implements PriceItem {
     @Override
     public double getPrice() {
        double total = 0;
-
-        total += OrderUtils.calculateTotal(sandwiches);
-        total += OrderUtils.calculateTotal(drinks);
-        total += OrderUtils.calculateTotal(chips);
-
+        for (Sandwich s : sandwiches)
+            total += s.getPrice();
+        for (Drink d : drinks)
+            total += d.getPrice();
+        for (Chip c : chips)
+            total += c.getPrice();
         return total;
     }
 
     public String getSummary() {
         StringBuilder summary = new StringBuilder();
-        summary.append("=== Order Summary ===\n");
+        summary.append("=== ORDER SUMMARY ===\n");
 
-        for (Sandwich s : sandwiches) {
-            summary.append("\n--- Sandwich ---\n");
-            summary.append(s.getSummary()).append("\n");
+        List<Sandwich> sandwichList = new ArrayList<>(sandwiches);
+        Collections.reverse(sandwichList);
+        for (Sandwich s : sandwichList) {
+            summary.append("\n").append(s.toString()).append("\n");
         }
 
-        for (Drink d : drinks) {
-            summary.append("\n--- Drink ---\n");
-            summary.append(d.getSummary()).append("\n");
+        List<Drink> drinkList = new ArrayList<>(drinks);
+        Collections.reverse(drinkList);
+        for (Drink d : drinkList) {
+            summary.append("\nDrink: ").append(d.toString()).append("\n");
         }
 
-        for (Chip c : chips) {
-            summary.append("\n--- Chips ---\n");
-            summary.append(c.getSummary()).append("\n");
+        List<Chip> chipList = new ArrayList<>(chips);
+        Collections.reverse(chipList);
+        for (Chip c : chipList) {
+            summary.append("\nChips: ").append(c.toString()).append("\n");
         }
 
-        summary.append("\nTotal Order Price: $").append(getPrice());
+        summary.append("\nTotal: $").append(getPrice());
         return summary.toString();
+    }
+
+    public void clear() {
+        sandwiches.clear();
+        drinks.clear();
+        chips.clear();
     }
 }

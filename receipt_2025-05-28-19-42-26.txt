@@ -1,0 +1,10 @@
+Date: 2025-05-28-19-42-26
+
+=== Order Summary ===
+
+--- Sandwich ---
+12" white (Toasted)
+Toppings:
+Total: $8.5
+
+Total Order Price: $8.5

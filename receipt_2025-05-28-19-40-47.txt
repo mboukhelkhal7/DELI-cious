@@ -1,0 +1,12 @@
+=== Order Summary ===
+Date: 2025-05-28-19-40-47
+
+=== Order Summary ===
+
+--- Sandwich ---
+4" wheat (Toasted)
+Toppings:
+ - Turkey
+Total: $6.5
+
+Total Order Price: $6.5
