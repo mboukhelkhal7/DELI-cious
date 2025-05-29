@@ -82,17 +82,33 @@ public class SandwichBuilder {
             System.out.print("Enter topping name (e.g. turkey, cheddar, lettuce): ");
             String name = scanner.nextLine().trim();
             if (name.isEmpty()) break;
-
-            displayMeatMenu();
-
             System.out.print("\"Enter topping type (meat/cheese/sauce/regular): ");
             String typeInput = scanner.nextLine().trim().toLowerCase();
-            String type = switch (typeInput) {
-                case "meat" -> ToppingType.MEAT;
-                case "cheese" -> ToppingType.CHEESE;
-                case "sauce" -> ToppingType.SAUCE;
-                default -> ToppingType.REGULAR;
-            };
+            String type = ToppingType.REGULAR;
+            switch (typeInput) {
+                case "meat" -> {
+                    displayMeatMenu();      // shows meat table
+                    type = ToppingType.MEAT;
+                }
+                case "cheese" -> {
+                    displayCheeseMenu();    // shows cheese table
+                    type = ToppingType.CHEESE;
+                }
+                case "sauce" -> {
+                    displaySauceMenu();     // shows sauce table
+                    type = ToppingType.SAUCE;
+                }
+                default -> {
+                    displayRegularToppingsMenu(); // shows regular toppings
+                    type = ToppingType.REGULAR;
+                }
+            }
+            //String type = switch (typeInput) {
+               // case "meat" -> ToppingType.MEAT;
+               // case "cheese" -> ToppingType.CHEESE;
+                //case "sauce" -> ToppingType.SAUCE;
+               // default -> ToppingType.REGULAR;
+           // };
 
             System.out.print("Is it extra? (yes/no): ");
             String extraInput = scanner.nextLine().trim().toLowerCase();
@@ -119,6 +135,38 @@ public class SandwichBuilder {
         System.out.println("|--------|---------|---------|--------------------|");
         System.out.println("| Extra  |  $0.50  |  $1.00  |  $1.50              |");
         System.out.println("--------------------------------------------------");
+    }
+    private static void displayCheeseMenu() {
+        System.out.println("\n==============================");
+        System.out.println("|        Cheese Menu        |");
+        System.out.println("|----------------------------|");
+        System.out.println("| - american                |");
+        System.out.println("| - provolone               |");
+        System.out.println("| - cheddar                 |");
+        System.out.println("| - swiss                   |");
+        System.out.println("==============================");
+    }
+
+    private static void displayRegularToppingsMenu() {
+        System.out.println("\n==============================");
+        System.out.println("|     Regular Toppings      |");
+        System.out.println("|----------------------------|");
+        System.out.println("| - lettuce    - cucumbers  |");
+        System.out.println("| - peppers    - guacamole  |");
+        System.out.println("| - onions     - mushrooms  |");
+        System.out.println("| - tomatoes   - pickles    |");
+        System.out.println("==============================");
+    }
+
+    private static void displaySauceMenu() {
+        System.out.println("\n==============================");
+        System.out.println("|        Sauce Menu         |");
+        System.out.println("|----------------------------|");
+        System.out.println("| - mayo     - mustard      |");
+        System.out.println("| - ketchup  - ranch        |");
+        System.out.println("| - thousand islands        |");
+        System.out.println("| - vinaigrette             |");
+        System.out.println("==============================");
     }
 
 }
