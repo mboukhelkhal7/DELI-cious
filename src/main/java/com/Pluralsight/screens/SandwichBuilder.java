@@ -2,6 +2,8 @@ package com.Pluralsight.screens;
 
 import com.Pluralsight.businessEntities.Order;
 import com.Pluralsight.businessEntities.Sandwich;
+import com.Pluralsight.businessEntities.Topping;
+import com.Pluralsight.types.ToppingType;
 
 import java.util.Scanner;
 
@@ -17,8 +19,11 @@ public class SandwichBuilder {
         String size = chooseSize(scanner);
         String bread = chooseBread(scanner);
         boolean toasted = askToasted(scanner);
+
         //Create sandwich
         Sandwich sandwich = new Sandwich(size, bread, toasted);
+        // Ask for toppings
+        addToppings(sandwich, scanner);
         // Add to order
         order.addSandwich(sandwich);
 
@@ -66,6 +71,34 @@ public class SandwichBuilder {
         System.out.print("\nDo you want it toasted? (yes/no): ");
         String input = scanner.nextLine().toLowerCase();
         return input.startsWith("y");
+    }
+
+    private static void addToppings(Sandwich sandwich, Scanner scanner) {
+        System.out.println("\nAdd toppings (Press Enter to stop):");
+
+        while (true) {
+            System.out.print("Topping name (e.g. Turkey, Lettuce): ");
+            String name = scanner.nextLine().trim();
+            if (name.isEmpty()) break;
+
+            System.out.print("Topping type (meat, cheese, regular, sauce): ");
+            String typeInput = scanner.nextLine().trim().toLowerCase();
+            String type;
+            switch (typeInput) {
+                case "meat": type = ToppingType.MEAT; break;
+                case "cheese": type = ToppingType.CHEESE; break;
+                case "sauce": type = ToppingType.SAUCE; break;
+                default: type = ToppingType.REGULAR; break;
+            }
+
+            System.out.print("Is it extra? (yes/no): ");
+            String extraInput = scanner.nextLine().trim().toLowerCase();
+            boolean isExtra = extraInput.startsWith("y");
+
+            Topping topping = new Topping(name, type, isExtra);
+            sandwich.addTopping(topping);
+            System.out.println(" Added " + topping);
+        }
     }
 
 }

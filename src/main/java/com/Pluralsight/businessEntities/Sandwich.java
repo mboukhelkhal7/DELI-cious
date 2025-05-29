@@ -10,10 +10,7 @@ public class Sandwich implements PriceItem {
     private String size;
     private String bread;
     private boolean toasted;
-    private List<String> meats = new ArrayList<>();
-    private List<String> cheeses = new ArrayList<>();
-    private List<String> toppings = new ArrayList<>();
-    private List<String> sauces = new ArrayList<>();
+    private List<Topping> toppings = new ArrayList<>();
 
     public Sandwich(String size, String bread, boolean toasted) {
         this.size = size;
@@ -27,49 +24,46 @@ public class Sandwich implements PriceItem {
 
     public boolean isToasted() {return toasted;}
 
-    public List<String> getMeats() {return meats;}
+    public List<Topping> getToppings() { return toppings; }
 
-    public List<String> getCheeses() {return cheeses;}
+    public void addTopping(Topping topping) {
+        toppings.add(topping);
+    }
 
-    public List<String> getToppings() {return toppings;}
-
-    public List<String> getSauces() {return sauces;}
-
-    public void addMeat(String meat) {meats.add(meat);}
-
-    public void addCheese(String cheese) {cheeses.add(cheese);}
-
-    public void addTopping(String topping) {toppings.add(topping);}
-
-    public void addSauce(String sauce) {sauces.add(sauce);}
 
     @Override
     public double getPrice() {
-        double basePrice = 0;
+        double basePrice;
 
-        if (size.equals("4")) basePrice = 5.50;
-        else if (size.equals("8")) basePrice = 7.00;
-        else if (size.equals("12")) basePrice = 8.50;
+        switch (size) {
+            case "4": basePrice = 5.50; break;
+            case "8": basePrice = 7.00; break;
+            case "12": basePrice = 8.50; break;
+            default: basePrice = 7.00; // Default to 8 inch
+        }
 
-        if (size.equals("4")) basePrice += meats.size() * 1.00;
-        else if (size.equals("8")) basePrice += meats.size() * 2.00;
-        else if (size.equals("12")) basePrice += meats.size() * 3.00;
-
-        if (size.equals("4")) basePrice += cheeses.size() * 0.75;
-        else if (size.equals("8")) basePrice += cheeses.size() * 1.50;
-        else if (size.equals("12")) basePrice += cheeses.size() * 2.25;
+        for (Topping topping : toppings) {
+            basePrice += topping.getPrice();
+        }
 
         return basePrice;
     }
+
     public String getSummary() {
-        return size + "\" " + bread + (toasted ? " (Toasted)" : "") +
-                "\nMeats: " + meats +
-                "\nCheeses: " + cheeses +
-                "\nToppings: " + toppings +
-                "\nSauces: " + sauces +
-                "\nTotal: $" + getPrice();
+        StringBuilder builder = new StringBuilder();
+        builder.append(size).append("\" ").append(bread);
+        if (toasted) builder.append(" (Toasted)");
+        builder.append("\nToppings:");
+        for (Topping t : toppings) {
+            builder.append("\n - ").append(t.toString());
+        }
+        builder.append("\nTotal: $").append(getPrice());
+        return builder.toString();
     }
+
+    @Override
     public String toString() {
         return getSummary();
     }
+
 }
