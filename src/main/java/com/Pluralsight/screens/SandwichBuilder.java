@@ -76,15 +76,18 @@ public class SandwichBuilder {
     }
 
     private static void addToppings(Sandwich sandwich, Scanner scanner) {
-        System.out.println("\nAdd toppings (Press Enter to stop):");
+        System.out.println("\n======= TOPPINGS MENU =======");
+        displayMeatMenu();
+        displayCheeseMenu();
+        displaySauceMenu();
+        displayRegularToppingsMenu();
 
         while (true) {
-            System.out.print("Enter topping name (e.g. turkey, cheddar, lettuce): ");
-            String name = scanner.nextLine().trim();
-            if (name.isEmpty()) break;
-            System.out.print("\"Enter topping type (meat/cheese/sauce/regular): ");
+
+
+            System.out.print("\"Enter topping type (meat/cheese/sauce/Veggies): ");
             String typeInput = scanner.nextLine().trim().toLowerCase();
-            String type = ToppingType.REGULAR;
+            String type = ToppingType.VEGGIES;
             switch (typeInput) {
                 case "meat" -> {
                     displayMeatMenu();      // shows meat table
@@ -100,15 +103,12 @@ public class SandwichBuilder {
                 }
                 default -> {
                     displayRegularToppingsMenu(); // shows regular toppings
-                    type = ToppingType.REGULAR;
+                    type = ToppingType.VEGGIES;
                 }
             }
-            //String type = switch (typeInput) {
-               // case "meat" -> ToppingType.MEAT;
-               // case "cheese" -> ToppingType.CHEESE;
-                //case "sauce" -> ToppingType.SAUCE;
-               // default -> ToppingType.REGULAR;
-           // };
+            System.out.print("Enter topping name (e.g. steak, cheddar, lettuce): ");
+            String name = scanner.nextLine().trim();
+            if (name.isEmpty()) break;
 
             System.out.print("Is it extra? (yes/no): ");
             String extraInput = scanner.nextLine().trim().toLowerCase();

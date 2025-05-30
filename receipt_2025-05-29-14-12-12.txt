@@ -1,0 +1,21 @@
+=== DELI-cious Sandwich Shop ===
+     Fresh. Fast. Friendly.
+-------------------------------
+Date: 2025-05-29-14-12-12
+
+=== ORDER SUMMARY ===
+
+4" white (Toasted)
+Toppings:
+ - ham (meat)
+ - swiss (cheese)
+ - mayo (sauce)
+ - onion lettuce tomateos (veggies)
+Total: $5.5
+
+Drink: small pepsi
+
+Total: $7.5
+
+Thank you for your order!
+Have a delicious day!

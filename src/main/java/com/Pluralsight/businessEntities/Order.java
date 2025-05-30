@@ -38,42 +38,79 @@ public class Order implements PriceItem {
     }
 
     @Override
-    public double getPrice() {
-       double total = 0;
-        for (Sandwich s : sandwiches)
-            total += s.getPrice();
-        for (Drink d : drinks)
-            total += d.getPrice();
-        for (Chip c : chips)
-            total += c.getPrice();
+     public double getPrice() {
+        double total = 0.0;
+        for (Sandwich s : sandwiches) total += s.getPrice();
+        for (Drink d : drinks) total += d.getPrice();
+        for (Chip c : chips) total += c.getPrice();
         return total;
     }
 
     public String getSummary() {
         StringBuilder summary = new StringBuilder();
-        summary.append("=== ORDER SUMMARY ===\n");
 
-        List<Sandwich> sandwichList = new ArrayList<>(sandwiches);
-        Collections.reverse(sandwichList);
-        for (Sandwich s : sandwichList) {
-            summary.append("\n").append(s.toString()).append("\n");
+        summary.append("\n============================================\n");
+        summary.append("               ORDER SUMMARY\n");
+        summary.append("============================================\n");
+
+        // SANDWICHES
+        if (!sandwiches.isEmpty()) {
+            summary.append("\nSandwiches:\n");
+            summary.append(String.format("%-15s %-10s %-10s %-10s\n", "Size", "Bread", "Toasted", "Price"));
+            summary.append("----------------------------------------------------\n");
+            for (int i = sandwiches.size() - 1; i >= 0; i--) {
+                Sandwich s = sandwiches.get(i);
+                summary.append(String.format("%-15s %-10s %-10s $%-9.2f\n",
+                        s.getSize() + " inch",
+                        s.getBread(),
+                        s.isToasted() ? "Yes" : "No",
+                        s.getPrice()));
+                if (!s.getToppings().isEmpty()) {
+                    summary.append("  Toppings:\n");
+                    for (Topping t : s.getToppings()) {
+                        summary.append("    - ").append(t.getName())
+                                .append(t.isExtra() ? " (extra)" : "")
+                                .append("\n");
+                    }
+                }
+                summary.append("\n");
+            }
         }
 
-        List<Drink> drinkList = new ArrayList<>(drinks);
-        Collections.reverse(drinkList);
-        for (Drink d : drinkList) {
-            summary.append("\nDrink: ").append(d.toString()).append("\n");
+        // DRINKS
+        if (!drinks.isEmpty()) {
+            summary.append("Drinks:\n");
+            summary.append(String.format("%-10s %-15s %-10s\n", "Size", "Flavor", "Price"));
+            summary.append("----------------------------------------\n");
+            for (int i = drinks.size() - 1; i >= 0; i--) {
+                Drink d = drinks.get(i);
+                summary.append(String.format("%-10s %-15s $%-9.2f\n",
+                        d.getSize(),
+                        d.getFlavor(),
+                        d.getPrice()));
+            }
+            summary.append("\n");
         }
 
-        List<Chip> chipList = new ArrayList<>(chips);
-        Collections.reverse(chipList);
-        for (Chip c : chipList) {
-            summary.append("\nChips: ").append(c.toString()).append("\n");
+        // CHIPS
+        if (!chips.isEmpty()) {
+            summary.append("Chips:\n");
+            summary.append(String.format("%-15s %-10s\n", "Type", "Price"));
+            summary.append("------------------------------\n");
+            for (int i = chips.size() - 1; i >= 0; i--) {
+                Chip c = chips.get(i);
+                summary.append(String.format("%-15s $%-9.2f\n", c.getType(), c.getPrice()));
+            }
+            summary.append("\n");
         }
 
-        summary.append("\nTotal: $").append(getPrice());
+        summary.append("============================================\n");
+        summary.append(String.format("TOTAL: $%.2f\n", getPrice()));
+        summary.append("============================================\n");
+
         return summary.toString();
     }
+
 
     public void clear() {
         sandwiches.clear();

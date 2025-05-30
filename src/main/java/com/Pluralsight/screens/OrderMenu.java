@@ -17,7 +17,7 @@ public class OrderMenu {
              System.out.println("             DELI-cious Order Menu          ");
              System.out.println("============================================");
 
-             System.out.printf("%-25s %-10s %-10s %-10s\n", "Item", "Small", "Medium", "Large");
+             System.out.printf("%-25s %-10s %-10s %-10s\n", "Item", "4 inch", "8 inch", "12 inch");
              System.out.println("----------------------------------------------------------");
              System.out.printf("%-25s $%-9.2f $%-9.2f $%-9.2f\n", "Sandwich", 5.50, 7.00, 8.50);
              System.out.printf("%-25s $%-9.2f $%-9.2f $%-9.2f\n", "Meat (extra)", 1.00, 2.00, 3.00);
@@ -46,10 +46,12 @@ public class OrderMenu {
                      break;
                  case "2":
                      System.out.println("\n[ add Drink]");
+                     displayDrinkMenu();
                      addDrink(order, scanner);
                      break;
                  case "3":
                      System.out.println("\n[ add chips ]");
+                     displayChipMenu();
                      addChip(order, scanner);
 
                      break;
@@ -120,5 +122,35 @@ public class OrderMenu {
         order.addChip(new Chip(type));
         System.out.println(" Chip added to your order.");
     }
+
+    private static void displayDrinkMenu() {
+        System.out.println("  -----------------------------");
+        System.out.println("  |         Drinks Menu       |");
+        System.out.println("  -----------------------------");
+        System.out.println("  | Flavor       | Small | Medium | Large |");
+        System.out.println("  -----------------------------------------");
+        System.out.println("  | Pepsi        | $2.00 | $2.50  | $3.00  |");
+        System.out.println("  | Coca-Cola    | $2.00 | $2.50  | $3.00  |");
+        System.out.println("  | Fanta        | $2.00 | $2.50  | $3.00  |");
+        System.out.println("  | Water        | $2.00 | $2.50  | $3.00  |");
+        System.out.println("  | Canada Dry   | $2.00 | $2.50  | $3.00  |");
+        System.out.println("  -----------------------------------------");
+    }
+
+    private static void displayChipMenu() {
+        System.out.println("\n----------------------------");
+        System.out.println("|        Chips Menu        |");
+        System.out.println("----------------------------");
+        System.out.println("| Type         | Price     |");
+        System.out.println("|--------------|-----------|");
+        System.out.println("| Lays         | $1.50     |");
+        System.out.println("| Doritos      | $1.50     |");
+        System.out.println("| Cheetos      | $1.50     |");
+        System.out.println("| Ruffles      | $1.50     |");
+        System.out.println("| Pringles     | $1.50     |");
+        System.out.println("----------------------------\n");
+    }
+
+
 
 }

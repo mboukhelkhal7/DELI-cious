@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ToppingTest {
     @Test
     public void testRegularToppingPrice() {
-        Topping topping = new Topping("lettuce", ToppingType.REGULAR, false);
+        Topping topping = new Topping("lettuce", ToppingType.VEGGIES, false);
         assertEquals(0.0, topping.getPrice(), 0.001);
     }
 
@@ -31,7 +31,7 @@ public class ToppingTest {
 
     @Test
     public void testExtraRegularToppingPrice() {
-        Topping topping = new Topping("pickles", ToppingType.REGULAR, true);
+        Topping topping = new Topping("pickles", ToppingType.VEGGIES, true);
         assertEquals(0.25, topping.getPrice(), 0.001);
     }
 }
