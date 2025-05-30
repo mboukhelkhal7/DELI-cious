@@ -51,11 +51,17 @@ public class SandwichBuilder {
         };
     }
     private static String chooseBread(Scanner scanner) {
-        System.out.println("\nChoose bread type:");
-        System.out.println("1) White");
-        System.out.println("2) Wheat");
-        System.out.println("3) Rye");
-        System.out.print("Enter your choice: ");
+        System.out.println("\n===================================");
+        System.out.println("|         Bread Selection         |");
+        System.out.println("===================================");
+        System.out.println("| Option |     Bread Type         |");
+        System.out.println("===================================");
+        System.out.println("|   1    |     White              |");
+        System.out.println("|   2    |     Wheat              |");
+        System.out.println("|   3    |     Rye                |");
+        System.out.println("===================================");
+        System.out.print("Enter your choice (1-3): ");
+        
         String input = scanner.nextLine();
 
         return switch (input) {

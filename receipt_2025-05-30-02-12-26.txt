@@ -1,0 +1,26 @@
+=== DELI-cious Sandwich Shop ===
+     Fresh. Fast. Friendly.
+-------------------------------
+Date: 2025-05-30-02-12-26
+
+
+============================================
+               ORDER SUMMARY
+============================================
+
+Sandwiches:
+Size            Bread      Toasted    Price     
+----------------------------------------------------
+8 inch          white      Yes        $8.00     
+  Toppings:
+    - ham (extra)
+    - steak
+    - swiss
+
+============================================
+TOTAL: $8.00
+============================================
+
+
+Thank you for your order!
+Have a delicious day!
