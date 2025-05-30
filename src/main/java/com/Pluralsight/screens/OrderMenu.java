@@ -150,7 +150,4 @@ public class OrderMenu {
         System.out.println("| Pringles     | $1.50     |");
         System.out.println("----------------------------\n");
     }
-
-
-
 }

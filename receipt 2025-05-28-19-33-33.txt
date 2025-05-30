@@ -1,8 +1,0 @@
-=== Order Summary ===
-
---- Sandwich ---
-8" white (Toasted)
-Toppings:
-Total: $7.0
-
-Total Order Price: $7.0

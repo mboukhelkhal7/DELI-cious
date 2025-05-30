@@ -101,14 +101,17 @@ public class SandwichBuilder {
                     displaySauceMenu();     // shows sauce table
                     type = ToppingType.SAUCE;
                 }
+                case "" -> {
+                    return;
+                }
                 default -> {
                     displayRegularToppingsMenu(); // shows regular toppings
                     type = ToppingType.VEGGIES;
                 }
             }
-            System.out.print("Enter topping name (e.g. steak, cheddar, lettuce): ");
+            System.out.print("Enter topping name: ");
             String name = scanner.nextLine().trim();
-            if (name.isEmpty()) break;
+            if (name.isEmpty()) return;
 
             System.out.print("Is it extra? (yes/no): ");
             String extraInput = scanner.nextLine().trim().toLowerCase();
@@ -146,7 +149,6 @@ public class SandwichBuilder {
         System.out.println("| - swiss                   |");
         System.out.println("==============================");
     }
-
     private static void displayRegularToppingsMenu() {
         System.out.println("\n==============================");
         System.out.println("|     Regular Toppings      |");
@@ -157,7 +159,6 @@ public class SandwichBuilder {
         System.out.println("| - tomatoes   - pickles    |");
         System.out.println("==============================");
     }
-
     private static void displaySauceMenu() {
         System.out.println("\n==============================");
         System.out.println("|        Sauce Menu         |");
@@ -168,5 +169,4 @@ public class SandwichBuilder {
         System.out.println("| - vinaigrette             |");
         System.out.println("==============================");
     }
-
 }

@@ -76,7 +76,6 @@ public class Order implements PriceItem {
                 summary.append("\n");
             }
         }
-
         // DRINKS
         if (!drinks.isEmpty()) {
             summary.append("Drinks:\n");
@@ -91,7 +90,6 @@ public class Order implements PriceItem {
             }
             summary.append("\n");
         }
-
         // CHIPS
         if (!chips.isEmpty()) {
             summary.append("Chips:\n");
@@ -103,15 +101,12 @@ public class Order implements PriceItem {
             }
             summary.append("\n");
         }
-
         summary.append("============================================\n");
         summary.append(String.format("TOTAL: $%.2f\n", getPrice()));
         summary.append("============================================\n");
 
         return summary.toString();
     }
-
-
     public void clear() {
         sandwiches.clear();
         drinks.clear();

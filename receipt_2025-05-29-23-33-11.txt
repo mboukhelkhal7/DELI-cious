@@ -1,7 +1,7 @@
 === DELI-cious Sandwich Shop ===
      Fresh. Fast. Friendly.
 -------------------------------
-Date: 2025-05-29-21-15-53
+Date: 2025-05-29-23-33-11
 
 
 ============================================
@@ -11,20 +11,12 @@ Date: 2025-05-29-21-15-53
 Sandwiches:
 Size            Bread      Toasted    Price     
 ----------------------------------------------------
-12 inch         white      Yes        $8.50     
+4 inch          white      No         $5.50     
   Toppings:
-    - ham
     - swiss
-    - ranch
-    - lettuce onion tomatoes
-
-Drinks:
-Size       Flavor          Price     
-----------------------------------------
-small      coke            $2.00     
 
 ============================================
-TOTAL: $10.50
+TOTAL: $5.50
 ============================================
 
 
