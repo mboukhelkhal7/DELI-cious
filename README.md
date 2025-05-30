@@ -1,47 +1,76 @@
-DELI-cious 🥪 - Java CLI Sandwich Shop
+# DELI-cious 🥪 - Java CLI Sandwich Shop
+
 DELI-cious is a customizable sandwich shop experience built as a Java CLI application. It allows users to build and order sandwiches with a variety of toppings, drinks, and chips — all from the terminal!
 
-📦 Features
-Build your own sandwich:
-Choose size (4", 8", 12")
-Select bread type
-Add meats, cheeses, sauces, and veggies
-Mark toppings as "extra"
-Toasted or not
-Add drinks and chips
-View order summary with prices
-Save receipt to file
-User-friendly text-based interface
-🧠 Concepts Demonstrated
-Object-Oriented Programming (OOP)
-Classes: Sandwich, Order, Topping, Drink, Chip
-Interface: PriceItem
-Polymorphism and encapsulation
-Java Collections and String formatting
-File I/O (saving receipts)
-Clean project architecture with packages:
-businessEntities, screens, service, types
-💻 Sample Screenshot
-=========================================== WELCOME TO DELI-Cious! Custom Sandwiches Made Fresh Date: 2025-05-30 Start New Order
+## 📦 Features
 
-Exit Enter your choice:
+- Build your own sandwich:
+    - Choose size (4", 8", 12")
+    - Select bread type
+    - Add meats, cheeses, sauces, and veggies
+    - Mark toppings as "extra"
+    - Toasted or not
+- Add drinks and chips
+- View order summary with prices
+- Save receipt to file
+- User-friendly text-based interface
 
-shell Copy Edit
+## 🧠 Concepts Demonstrated
 
-💾 Receipt Example
-============================================ ORDER SUMMARY Sandwiches: Size Bread Toasted Price 8 inch wheat Yes $7.50 Toppings:
+- Object-Oriented Programming (OOP)
+    - Classes: `Sandwich`, `Order`, `Topping`, `Drink`, `Chip`
+    - Interface: `PriceItem`
+    - Polymorphism and encapsulation
+- Java Collections and String formatting
+- File I/O (saving receipts)
+- Clean project architecture with packages:
+    - `businessEntities`, `screens`, `service`, `types`
 
-steak (extra)
-cheddar
-lettuce
-mayo
-Drinks: Size Flavor Price medium Coca-Cola $2.50
+## 💻 Sample Screenshot
 
-Chips: Type Price Lays $1.50
+===========================================
+WELCOME TO DELI-Cious!
+Custom Sandwiches Made Fresh
+Date: 2025-05-30
+Start New Order
 
-============================================ TOTAL: $11.50 csharp Copy Edit
+Exit
+Enter your choice:
 
-💡 Highlight Code Snippet
+shell
+Copy
+Edit
+
+## 💾 Receipt Example
+
+============================================
+ORDER SUMMARY
+Sandwiches:
+Size Bread Toasted Price
+8 inch wheat Yes $7.50
+Toppings:
+- steak (extra)
+- cheddar
+- lettuce
+- mayo
+
+Drinks:
+Size Flavor Price
+medium Coca-Cola $2.50
+
+Chips:
+Type Price
+Lays $1.50
+
+============================================
+TOTAL: $11.50
+csharp
+Copy
+Edit
+
+## 💡 Highlight Code Snippet
+
+```java
 public double getPrice() {
     double total = 0.0;
     for (Sandwich s : sandwiches) total += s.getPrice();
