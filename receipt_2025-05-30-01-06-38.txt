@@ -1,0 +1,37 @@
+=== DELI-cious Sandwich Shop ===
+     Fresh. Fast. Friendly.
+-------------------------------
+Date: 2025-05-30-01-06-38
+
+
+============================================
+               ORDER SUMMARY
+============================================
+
+Sandwiches:
+Size            Bread      Toasted    Price     
+----------------------------------------------------
+12 inch         white      No         $8.50     
+  Toppings:
+    - salami
+    - cheddar
+    - mayo
+    - pickles
+
+Drinks:
+Size       Flavor          Price     
+----------------------------------------
+small      coke            $2.00     
+
+Chips:
+Type            Price     
+------------------------------
+Lays            $1.50     
+
+============================================
+TOTAL: $12.00
+============================================
+
+
+Thank you for your order!
+Have a delicious day!

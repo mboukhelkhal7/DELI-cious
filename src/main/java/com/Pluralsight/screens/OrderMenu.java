@@ -8,15 +8,17 @@ import com.Pluralsight.service.ReceiptWriter;
 import java.util.Scanner;
 
 public class OrderMenu {
+
     public static void show(Order order) {
+
 
         Scanner scanner = new Scanner(System.in);
          while (true) {
 
              System.out.println("\n============================================");
              System.out.println("             DELI-cious Order Menu          ");
-             System.out.println("============================================");
-
+             System.out.println("============================================") ;
+             System.out.println("----------------------------------------------------------");
              System.out.printf("%-25s %-10s %-10s %-10s\n", "Item", "4 inch", "8 inch", "12 inch");
              System.out.println("----------------------------------------------------------");
              System.out.printf("%-25s $%-9.2f $%-9.2f $%-9.2f\n", "Sandwich", 5.50, 7.00, 8.50);

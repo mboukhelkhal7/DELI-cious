@@ -6,6 +6,7 @@ import com.Pluralsight.service.OrderUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class Order implements PriceItem {
@@ -52,55 +53,70 @@ public class Order implements PriceItem {
         summary.append("\n============================================\n");
         summary.append("               ORDER SUMMARY\n");
         summary.append("============================================\n");
-
         // SANDWICHES
         if (!sandwiches.isEmpty()) {
             summary.append("\nSandwiches:\n");
             summary.append(String.format("%-15s %-10s %-10s %-10s\n", "Size", "Bread", "Toasted", "Price"));
             summary.append("----------------------------------------------------\n");
-            for (int i = sandwiches.size() - 1; i >= 0; i--) {
-                Sandwich s = sandwiches.get(i);
-                summary.append(String.format("%-15s %-10s %-10s $%-9.2f\n",
-                        s.getSize() + " inch",
-                        s.getBread(),
-                        s.isToasted() ? "Yes" : "No",
-                        s.getPrice()));
-                if (!s.getToppings().isEmpty()) {
-                    summary.append("  Toppings:\n");
-                    for (Topping t : s.getToppings()) {
-                        summary.append("    - ").append(t.getName())
-                                .append(t.isExtra() ? " (extra)" : "")
-                                .append("\n");
-                    }
-                }
-                summary.append("\n");
-            }
+            sandwiches.stream()
+                    .collect(Collectors.collectingAndThen(Collectors.toList(), list -> {
+                        Collections.reverse(list);
+                        return list;
+                    }))
+                    .forEach(s -> {
+                        summary.append(String.format("%-15s %-10s %-10s $%-9.2f\n",
+                                s.getSize() + " inch",
+                                s.getBread(),
+                                s.isToasted() ? "Yes" : "No",
+                                s.getPrice()));
+                        if (!s.getToppings().isEmpty()) {
+                            summary.append("  Toppings:\n");
+                            for (Topping t : s.getToppings()) {
+                                summary.append("    - ").append(t.getName())
+                                        .append(t.isExtra() ? " (extra)" : "")
+                                        .append("\n");
+                            }
+                        }
+                        summary.append("\n");
+                    });
+
         }
         // DRINKS
         if (!drinks.isEmpty()) {
             summary.append("Drinks:\n");
             summary.append(String.format("%-10s %-15s %-10s\n", "Size", "Flavor", "Price"));
             summary.append("----------------------------------------\n");
-            for (int i = drinks.size() - 1; i >= 0; i--) {
-                Drink d = drinks.get(i);
-                summary.append(String.format("%-10s %-15s $%-9.2f\n",
-                        d.getSize(),
-                        d.getFlavor(),
-                        d.getPrice()));
-            }
+
+            drinks.stream()
+                    .collect(Collectors.collectingAndThen(Collectors.toList(), list -> {
+                        Collections.reverse(list);
+                        return list;
+                    }))
+                    .forEach(d -> summary.append(String.format("%-10s %-15s $%-9.2f\n",
+                            d.getSize(),
+                            d.getFlavor(),
+                            d.getPrice())));
+
             summary.append("\n");
         }
+
+
         // CHIPS
         if (!chips.isEmpty()) {
             summary.append("Chips:\n");
             summary.append(String.format("%-15s %-10s\n", "Type", "Price"));
             summary.append("------------------------------\n");
-            for (int i = chips.size() - 1; i >= 0; i--) {
-                Chip c = chips.get(i);
-                summary.append(String.format("%-15s $%-9.2f\n", c.getType(), c.getPrice()));
-            }
+
+            chips.stream()
+                    .collect(Collectors.collectingAndThen(Collectors.toList(), list -> {
+                        Collections.reverse(list);
+                        return list;
+                    }))
+                    .forEach(c -> summary.append(String.format("%-15s $%-9.2f\n", c.getType(), c.getPrice())));
+
             summary.append("\n");
         }
+
         summary.append("============================================\n");
         summary.append(String.format("TOTAL: $%.2f\n", getPrice()));
         summary.append("============================================\n");

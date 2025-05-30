@@ -132,7 +132,7 @@ public class SandwichBuilder {
         System.out.println("|  - roast beef                                   |");
         System.out.println("|  - chicken                                      |");
         System.out.println("|  - bacon                                        |");
-        System.out.println("--------------------------------------------------");
+        System.out.println("--------------------------------------------------" );
         System.out.println("|              Extra Meat Pricing                 |");
         System.out.println("|        |   4in   |   8in   |   12in             |");
         System.out.println("|--------|---------|---------|--------------------|");
@@ -140,7 +140,7 @@ public class SandwichBuilder {
         System.out.println("--------------------------------------------------");
     }
     private static void displayCheeseMenu() {
-        System.out.println("\n==============================");
+        System.out.println("\n============================== ");
         System.out.println("|        Cheese Menu        |");
         System.out.println("|----------------------------|");
         System.out.println("| - american                |");
